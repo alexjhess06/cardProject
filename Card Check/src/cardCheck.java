@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 public class cardCheck
 	{
@@ -16,10 +17,11 @@ public class cardCheck
 		private static void getNum()
 			{
 			long card = userInput.nextLong();
-			for(int i = 0; i <= 16; i++) {
+			for(int i = 0; i < 16; i++) {
+				cardNum[i] = card;
 				
 			}
-				
+			System.out.println(Arrays.toString(cardNum));
 			}
 
 	}
