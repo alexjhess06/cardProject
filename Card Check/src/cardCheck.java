@@ -12,16 +12,37 @@ public class cardCheck
 				
 				
 				 getNum();
+				 doMath();
 			}
 
 		private static void getNum()
 			{
 			long card = userInput.nextLong();
+			String cardStr = Long.toString(card);
+			
 			for(int i = 0; i < 16; i++) {
-				cardNum[i] = card;
-				
+				char digitChar = cardStr.charAt(i);
+	            cardNum[i] = (long) Character.getNumericValue(digitChar);
 			}
 			System.out.println(Arrays.toString(cardNum));
 			}
+		private static void doMath()
+		{
+			for(int i = 0; i < 16; i+=2) {
+				cardNum[i] *= 2;
+			
+			System.out.println(Arrays.toString(cardNum));
+			for(Long digit : cardNum) {
+				String digitStr = String.valueOf(digit);
+				int length = digitStr.length();
+				if(length == 1) {
+					long a = cardNum[i] / 10;
+					long b = cardNum[i] % 10;
+					cardNum[i] = a+b;
+				}
+			}
+			}
+			System.out.println(Arrays.toString(cardNum));
+		}
 
 	}
