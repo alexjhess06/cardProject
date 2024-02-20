@@ -23,7 +23,7 @@ public class cardCheck
 				 }
 				if(giveGet==1) {
 					checkValidity = true;
-					while(checkValidity == true) {
+					while(checkValidity) {
 					genNums();
 					doMath();
 					isValid();
@@ -100,8 +100,8 @@ public class cardCheck
 				for(int i = 0; i < 16; i++) {
 					total = total + randCardNum[i];
 				}
-				System.out.println(total);
-				total = 0;
+				//System.out.println(total);
+				
 			}
 		}
 		private static void isValid()
@@ -109,13 +109,18 @@ public class cardCheck
 			if(total % 10 == 0) {
 				System.out.println("This is possibly a valid credit card number!");
 					valid++;
-					for(int i : randCardNum) {
-						 String str = randCardNum.toString();
-						 randNums[i] = str;
-						}
+					int[] validCard = Arrays.copyOf(randCardNum, randCardNum.length);
+					randNums[valid - 1] = Arrays.toString(randCardNum);
+					//for(int i : randCardNum) {
+						// String str = randCardNum.toString();
+						// randNums[i] = str;
+						//}
 				if(valid == 100) {
 					checkValidity = false;
-					System.out.println("Here is your 100 random potentially valid credit card numbers! \n" + randNums);
+					System.out.println("Here is your 100 random potentially valid credit card numbers!");
+					for(String card : randNums) {
+						System.out.println(card);
+					}
 				}
 			}
 			else {
